@@ -1,0 +1,3 @@
+server.name: kibana
+server.host: "0"
+xpack.encryptedSavedObjects.encryptionKey: lMphEYv7vWJNqrnBMdYJY2lhahtPe4DR
