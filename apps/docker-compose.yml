@@ -23,7 +23,6 @@ services:
       co.elastic.metrics/enabled: true
       co.elastic.metrics/module: nginx
       co.elastic.metrics/hosts: '$${data.host}:80'
-      co.elastic.metrics/metrics_path: '/echo'
       co.elastic.metrics/period: 1m
       co.elastic.logs/module: nginx
       co.elastic.logs/fileset.stdout: access
@@ -34,8 +33,8 @@ services:
     image: docker.elastic.co/beats/filebeat:7.11.2
     container_name: filebeat
     environment:
-      - ELASTICSEARCH_HOSTS=["192.168.1.23:9200"]
-      - KIBANA_HOST="192.168.1.23:5601"
+      - ELASTICSEARCH_HOSTS=["${HOST_IP}:9200"]
+      - KIBANA_HOST="${HOST_IP}:5601"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - /var/lib/docker/containers:/var/lib/docker/containers:ro
@@ -44,23 +43,23 @@ services:
     user: root
     networks:
       - echoapp
-  # metricbeat:
-  #   image: docker.elastic.co/beats/metricbeat:7.11.2
-  #   container_name: metricbeat
-  #   # command: metricbeat -e -system.hostfs=/hostfs -strict.perms=false
-  #   environment:
-  #     - ELASTICSEARCH_HOSTS=["192.168.1.23:9200"]
-  #     - KIBANA_HOST="192.168.1.23:5601"
-  #   volumes:
-  #     - ./metricbeat.yml:/usr/share/metricbeat/metricbeat.yml:ro
-  #     - ./metricbeat-system.yml:/usr/share/metricbeat/modules.d/system.yml:ro
-  #     - /var/run/docker.sock:/var/run/docker.sock:ro
-  #     - /sys/fs/cgroup:/hostfs/sys/fs/cgroup:ro
-  #     - /proc:/hostfs/proc:ro
-  #     - /:/hostfs:ro
-  #   user: root
-  #   networks:
-  #     - echoapp
+  metricbeat:
+    image: docker.elastic.co/beats/metricbeat:7.11.2
+    container_name: metricbeat
+    # command: metricbeat -e -system.hostfs=/hostfs -strict.perms=false
+    environment:
+      - ELASTICSEARCH_HOSTS=["${HOST_IP}:9200"]
+      - KIBANA_HOST="${HOST_IP}:5601"
+    volumes:
+      - ./metricbeat.yml:/usr/share/metricbeat/metricbeat.yml:ro
+      - ./metricbeat-system.yml:/usr/share/metricbeat/modules.d/system.yml:ro
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /sys/fs/cgroup:/hostfs/sys/fs/cgroup:ro
+      - /proc:/hostfs/proc:ro
+      - /:/hostfs:ro
+    user: root
+    networks:
+      - echoapp
 networks:
   echoapp:
     driver: bridge
