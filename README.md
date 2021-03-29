@@ -25,3 +25,10 @@ $ docker-compose up
 
 This creates an echo app, nginx proxy, Metricbeat and Filebeat. Echo app is reachable via proxy on http://localhost:8080/echoapp (echo).
 It also creates a container with siege for load testing
+
+To run siege, docker exec into sieger container
+```
+$ docker exec -it <container-id> bash
+$ cd home
+$ siege -f urls.txt -c <concurrency>
+```
