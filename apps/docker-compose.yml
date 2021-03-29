@@ -60,6 +60,16 @@ services:
     user: root
     networks:
       - echoapp
+  sieger:
+    build:
+      context: ./
+      dockerfile: dockerfile-sieger
+    container_name: sieger
+    volumes:
+      - ./urls.txt:/home/urls.txt:ro
+    user: root
+    networks:
+      - echoapp
 networks:
   echoapp:
     driver: bridge

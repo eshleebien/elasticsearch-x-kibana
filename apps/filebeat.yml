@@ -7,11 +7,14 @@ filebeat.autodiscover:
   providers:
     - type: docker
       hints.enabled: true
-      templates:
-        - condition.contains:
-            docker.container.name: app
-          config:
-            - module: nginx
+      # templates:
+      #   - condition.contains:
+      #       docker.container.name: app
+      #     config:
+      #       - type: docker
+      #         containers.ids:
+      #           - "${data.docker.container.id}"
+      #         pipeline: my-custom-pipeline
 
 processors:
 - add_cloud_metadata: ~

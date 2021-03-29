@@ -1,0 +1,12 @@
+http://192.168.1.23:8080/echo
+http://192.168.1.23:8080/echo/users
+http://192.168.1.23:8080/echo/users/manage
+http://192.168.1.23:8080/echo/users/manage?edit=mobile&ig=1
+http://192.168.1.23:8080/echo/users/manage?edit=web&ig=1
+http://192.168.1.23:8080/echo/groups
+http://192.168.1.23:8080/echo/groups/manage
+http://192.168.1.23:8080/echo/roles
+http://192.168.1.23:8080/echo/roles/superadmin
+http://192.168.1.23:8080/echo/roles/normal
+http://192.168.1.23:8080/echo/roles/normal?id=1234
+http://192.168.1.23:8080/echo/roles/superadmin?id=3255
