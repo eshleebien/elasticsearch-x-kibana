@@ -3,10 +3,16 @@ http://proxy/echo/users
 http://proxy/echo/users/manage
 http://proxy/echo/users/manage?edit=mobile&ig=1
 http://proxy/echo/users/manage?edit=web&ig=1
+http://proxy/echo/user POST name=justin&dob=1994-03-1
 http://proxy/echo/groups
 http://proxy/echo/groups/manage
+http://proxy/echo/user POST name=joseph&dob=1994-02-4
 http://proxy/echo/roles
 http://proxy/echo/roles/superadmin
+http://proxy/echo/user/ PUT name=joseph&dob=1994-02-4
 http://proxy/echo/roles/normal
 http://proxy/echo/roles/normal?id=1234
 http://proxy/echo/roles/superadmin?id=3255
+http://proxy/echo/user POST name=john&dob=1994-02-1
+http://proxy/echo/group POST group_name=IT,sub_group=everyone
+http://proxy/echo/role POST name=admin&permissions=all
