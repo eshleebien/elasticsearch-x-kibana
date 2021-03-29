@@ -16,7 +16,7 @@ This creates Elasticsearch and Kibana containers and reachable on http://localho
 
 
 #### Run sample app, proxy, metricbeat and filebeat
-Change the HOST_IP to you machine's IP address in `apps/.env` file
+Change the HOST_IP to your machine's IP address in `apps/.env` file. 
 
 ```
 $ cd apps
